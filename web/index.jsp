@@ -9,8 +9,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login Form</title>
+    <title>Login Page</title>
     <style>
+        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -53,6 +54,7 @@
     </style>
 </head>
 <body>
+    <h2 style="text-align:center;">Login Page</h2>
     <form method="post" action="loginData.jsp">
         <table>
             <tr>
