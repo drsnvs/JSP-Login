@@ -13,11 +13,15 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%!
+           Connection con = null;
+           Statement st = null;
+           PreparedStatement ps = null; 
+        %>
+        
         <%
             try{
-                Connection con = null;
-                Statement st = null;
-                PreparedStatement ps = null;
+                
 //                ResultSet rs = null;
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/darshan_14","root","");
@@ -32,11 +36,12 @@
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
                     if(rs.getString("email_id").equals(email) && rs.getString("password").equals(password)){
-                        if(rs.getInt("role")==1){
+                        if(rs.getInt("role") == 1){
                             RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
-                            
+                            rd.forward(request, response);
                         }else{
-                            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                            RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
+                            rd.forward(request, response);
                         }
 //                        out.println("Yes");
                     }else{
