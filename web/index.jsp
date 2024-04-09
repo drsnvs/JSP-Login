@@ -82,12 +82,18 @@
         function validation(){
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
+            var regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+            var result = regex.test(email);
             if(email == ""){
                 alert("Enter email");
                 return false;
             }
             if(password == ""){
                 alert("Enter password");
+                return false;
+            }
+            if(!result){
+                alert("Enter valid email formate");
                 return false;
             }
         }
