@@ -32,14 +32,19 @@
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
                     if(rs.getString("email_id").equals(email) && rs.getString("password").equals(password)){
-                        out.println("Yes");
+                        if(rs.getInt("role")==1){
+                            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                            
+                        }else{
+                            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                        }
+//                        out.println("Yes");
                     }else{
-                        out.println("No");
+//                        out.println("No");
                         out.println("<script>alert('Retry')</script>");
                     }
                 }else{
                     out.print("user not available");
-                    out.println("<script>window.alert(\"Success: Operation completed successfully!\");</script>");
                     RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                     rd.forward(request, response);
                 }
