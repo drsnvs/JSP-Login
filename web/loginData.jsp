@@ -13,6 +13,16 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            try{
+                HttpSession ssn = request.getSession();
+                if(!ssn.getId().equals(ssn.getAttribute("key"))){
+                    response.sendRedirect("index.jsp");
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        %>
         <%!
            Connection con = null;
            Statement st = null;
@@ -21,6 +31,7 @@
         
         <%
             try{
+                
                 
 //                ResultSet rs = null;
                 Class.forName("com.mysql.jdbc.Driver");
