@@ -26,14 +26,22 @@
                 String password = request.getParameter("password");
 
     //            out.print(username);
-                ps = con.prepareStatement("select * from users where email_id = ?");
+                ps = con.prepareStatement("select * from users where email_id = ? and password = ?");
                 ps.setString(1, email);
+                ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
-                rs.next();
-                if(rs.getString("email_id").equals(email)){
-                    out.println("Yes");
+                if(rs.next()){
+                    if(rs.getString("email_id").equals(email) && rs.getString("password").equals(password)){
+                        out.println("Yes");
+                    }else{
+                        out.println("No");
+                        out.println("<script>alert('Retry')</script>");
+                    }
                 }else{
-                    out.println("No");
+                    out.print("user not available");
+                    out.println("<script>window.alert(\"Success: Operation completed successfully!\");</script>");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    rd.forward(request, response);
                 }
         %>
         <%
