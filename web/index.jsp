@@ -63,7 +63,7 @@
         }
     %>
     <h2 style="text-align:center;">Login Page</h2>
-    <form method="post" action="loginData.jsp">
+    <form method="post" action="loginData.jsp" onsubmit="return validation()">
         <table>
             <tr>
                 <td>Email</td>
@@ -78,5 +78,19 @@
             </tr>
         </table>    
     </form>
+    <script>
+        function validation(){
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            if(email == ""){
+                alert("Enter email");
+                return false;
+            }
+            if(password == ""){
+                alert("Enter password");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
