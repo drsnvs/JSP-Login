@@ -54,6 +54,16 @@
     </style>
 </head>
 <body>
+    <%
+        try {
+            HttpSession ssn = request.getSession();
+            if (!ssn.getId().equals(ssn.getAttribute("key"))) {
+                response.sendRedirect("index.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    %>
     <h2 style="text-align:center;">Login Page</h2>
     <form method="post" action="loginData.jsp">
         <table>
